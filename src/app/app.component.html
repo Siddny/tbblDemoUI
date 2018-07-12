@@ -1,7 +1,7 @@
 <div class="app-body">
     
     <div class="container">
-      <main style="margin-top: 5%;">
+      <main style="margin-top: 2em;">
         <div class="row">
           <div class="col-md-12" style="align-content: center;">
             <h2>Techno Brain BPO</h2>
@@ -9,15 +9,18 @@
             <img class="img img-responsive" src="assets/images/tbbl.jpg"> -->
           </div>
         </div>
-        <mat-toolbar color="primary"><h2>ABC Telesales Call Script </h2></mat-toolbar>
+        <mat-toolbar color="primary">
+          <h2>ABC Telesales Call Script </h2>
+        </mat-toolbar>
 
         <mat-card>
             <mat-horizontal-stepper #stepper>
               <ng-template matStepperIcon="edit">
-                      <mat-icon>check</mat-icon>
+                <mat-icon>check</mat-icon>
               </ng-template>
             <mat-step>   
             <!-- Q1   -->
+            <!-- step 0 -->
               Hello, Good Morning/afternoon/evening. My Name is Cynthia  Calling you from ABC, could I speak to Mr./Mrs/Ms./Dr./Prof. 
               <br>
               <div>
@@ -43,6 +46,7 @@
               </mat-step>
             <mat-step>
               <!-- Q2 -->
+            <!-- step 1 -->
              Can I talk to Mr./Mrs/Ms./Dr./Prof. at some other date and time?
                   <br>
                   <mat-radio-group [(ngModel)]="new_script.q2" name="q2">
@@ -64,15 +68,17 @@
             </mat-step>
             <mat-step>
               <!-- Q3 -->
+              <!-- step 2 -->
                Its about ABC and the benefits your company can acquire from us working together. Which is offering a solution that will significantly reduce your IT infrastructure costs while ensuring reliability and enhanced security through the services we offer. Are you interested? 
-            <br>
-             <mat-radio-group [(ngModel)]="new_script.q3" name="q3">
+              <br>
+              <mat-radio-group [(ngModel)]="new_script.q3" name="q3">
                 <mat-radio-button value="YES" (click)="move(3)">YES</mat-radio-button><br>
                 <mat-radio-button value="NO" (click)="move(12)">NO</mat-radio-button><br>
               </mat-radio-group>
             </mat-step>
             <mat-step>
               <!-- Q4 -->
+              <!-- step 3 -->
               <b>Thank you Charles Mwasambu, Have you heard about ABC?</b>
               <br>
               <mat-radio-group [(ngModel)]="new_script.q4" name="q4">
@@ -84,6 +90,7 @@
             </mat-step>
             <mat-step>
               <!-- Q5 -->
+              <!-- step 4 -->
               What's your take on these ABC Services? 
               <br>
              <mat-radio-group [(ngModel)]="new_script.q5" name="q5">
@@ -99,6 +106,8 @@
               </div>
             </mat-step>
             <mat-step>
+              <!-- Q6 -->
+              <!-- step 5 -->
               So I believe securing your business information is extremely critical. How do you back up your business data?
               <br>
               What systems do you currently use?
@@ -116,6 +125,8 @@
               </form>
             </mat-step>
             <mat-step>
+              <!-- Q7 -->
+              <!-- step 6 -->
               With that (Personalize client name), you do agree that your business data is extremely important for your business & needs back up?
               <br>
               <mat-radio-group [(ngModel)]="new_script.q7" name="q7">
@@ -124,6 +135,8 @@
               </mat-radio-group>
             </mat-step>
             <mat-step>
+              <!-- Q8 -->
+              <!-- step 7 -->
               You also agree that that our service is very affordable, right?
               <br>
               <mat-radio-group [(ngModel)]="new_script.q8" name="q8">
@@ -132,46 +145,48 @@
               </mat-radio-group>
             </mat-step>
             <mat-step>
-              You also agree that that our service is very affordable, right? 
-              <br>
-              <mat-radio-group [(ngModel)]="new_script.q9" name="q9">
-                <mat-radio-button value="Agree" (click)="move(9)">Agree</mat-radio-button><br>
-                <mat-radio-button value="Disagree" (click)="move(9)">Disagree</mat-radio-button><br>
-              </mat-radio-group>
-            </mat-step>
-            <mat-step>
+              <!-- Q9 -->
+              <!-- step 8 -->
               Fantastic. If you’d so kind as to giving us an appropriate time in the week one of our business executives will come over to discuss the solution in detail. 
               <br>
-              <mat-radio-group [(ngModel)]="new_script.q10" name="q10">
-                <mat-radio-button value="YES" (click)="move(10)">YES</mat-radio-button><br>
-                <mat-radio-button value="NO" (click)="move(13)">NO</mat-radio-button><br>
+              <mat-radio-group [(ngModel)]="new_script.q9" name="q9">
+                <mat-radio-button value="YES" (click)="move(9)">YES</mat-radio-button><br>
+                <mat-radio-button value="NO" (click)="move(12)">NO</mat-radio-button><br>
               </mat-radio-group>
             </mat-step>
             <mat-step>
+              <!-- Q10 -->
+              <!-- step 9 -->
               Kindly assist us with your email address to sent an appointment invite whereby one of our representatives will visit you and take you through the process of registration / set up and get you ready for the services. 
               <form>
                 <mat-form-field style="width: 100%;">
-                  <input matInput placeholder="Enter email address" [(ngModel)]="new_script.q11" name="q11">
+                  <input matInput placeholder="Enter email address" [(ngModel)]="new_script.q10" name="q10">
                 </mat-form-field>
               </form>
-                <button mat-raised-button (click)="move(11)" style="background-color: lightgreen;">Proceed</button>
+                <button mat-raised-button (click)="move(10)" style="background-color: lightgreen;">Proceed</button>
             </mat-step>
             <mat-step>
+              <!-- Q11 -->
+              <!-- step 10 -->
               Is there any question you would like me to address with regards to our Services / or any clarification on the information I have given you? 
               <br>
-              <mat-radio-group [(ngModel)]="new_script.q13" name="q13">
+              <mat-radio-group>
                 <mat-radio-button value="YES" (click)="haveQuestion()">YES</mat-radio-button><br>
-                <mat-radio-button value="NO" (click)="move(13)">NO</mat-radio-button><br>
+              </mat-radio-group>
+              <mat-radio-group [(ngModel)]="new_script.q11" name="q11">
+                <mat-radio-button value="NO" (click)="move(11)">NO</mat-radio-button><br>
               </mat-radio-group>
               <form *ngIf="question">
                 <mat-form-field style="width: 100%;">
-                  <textarea matInput placeholder="The question asked..."></textarea>
+                  <textarea matInput placeholder="The question asked..." [(ngModel)]="new_script.q11" name="q11" ></textarea>
                 </mat-form-field>
-                <button mat-raised-button (click)="move(13)" style="background-color: lightgreen;">Proceed</button>
+                <button mat-raised-button (click)="move(12)" style="background-color: lightgreen;">Proceed</button>
               </form>
             </mat-step>
             <mat-step>
-              <mat-radio-group [(ngModel)]="new_script.q12" name="q12">
+              <!-- Dispose -->
+              <!-- step 11 -->
+              <mat-radio-group [(ngModel)]="new_script.dispose" name="dispose">
                 <mat-radio-button value="Phone Switched off">Phone Switched off</mat-radio-button><br>
                 <mat-radio-button value="No Answer">No Answer</mat-radio-button><br>
                 <mat-radio-button value="Phone Busy">Phone Busy</mat-radio-button><br>
@@ -184,6 +199,8 @@
               <button mat-raised-button (click)="postScript()" style="background-color: red;">End</button> 
             </mat-step>
             <mat-step>
+              <!-- END OF CALL -->
+              <!-- step 12 -->
               Well Charles Mwasambu, thank you for your time, it's been a pleasure talking to you. 
               If you have any further clarifications , feel free to contact our website www.angani.co or phone number 020 – 5230028. 
                
@@ -196,9 +213,6 @@
         <mat-card class="mt-1">
           <div>
             <button mat-raised-button (click)="getCsvs();stepper.reset()" style="background-color: lightgreen;"> Generate Report</button>
-            <div>
-              
-            </div>
           </div>
         </mat-card>
       </main>

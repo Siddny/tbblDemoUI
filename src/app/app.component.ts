@@ -39,26 +39,12 @@ export class AppComponent  implements OnInit{
   csvs: any;
   scripts: any=[];
 
-  constructor(private db:ServiceService, private http: Http){
-    //DB service function called
-    //   db.getUsers().subscribe(
-    //     (response: Response) => { 
-    //       // this.persons = response.json();
-    //       // console.log(this.persons);
-    //       // this.reloadItems(this.params);
-    //     } ,
-    //     (error) => {console.log(error);}
-    // );;
-  } 
+  constructor(private db:ServiceService, private http: Http)
+  {  } 
 
   //Init method
   ngOnInit(){
-    this.userForm = new FormGroup({
-      'id': new FormControl(null),
-      'first_name': new FormControl(null, Validators.required),
-      'last_name': new FormControl(null, Validators.required)
-    });
-    this.getScripts();
+    // this.getScripts();
   }
 
   getScripts(){
@@ -82,10 +68,13 @@ export class AppComponent  implements OnInit{
     console.log(this.new_script.q1);
     this.db.newScript(this.new_script).subscribe(data=>{
       this.new_script = new Script();
-      this.ngOnInit();
     })
+    this.showName = false;
+    this.question = false;
+    this.othertime = false;
+    this.gettime = false;
+    this.poor = false;
   }
-
   
   move(index: number) {
     this.stepper.selectedIndex = index;
@@ -110,66 +99,6 @@ export class AppComponent  implements OnInit{
   Poor(){
     this.poor = !this.poor
   }
-
-  // reloadItems(params) {
-  //   // this.itemResource = new DataTableResource(this.persons);
-  //   this.itemResource.count().then(count => this.itemCount = count);
-  //     this.itemResource.query(params).then(items => this.items = items);
-  // }
-  // special properties:
-  rowClick(rowEvent) {
-    console.log('Clicked: ' + rowEvent.row.item.id);
-  }
-  rowDoubleClick(rowEvent) {
-    alert('Double clicked: ' + rowEvent.row.item.id);
-  }
-
-  rowTooltip(item) { return item.jobTitle; }
-  initUser(){
-    //User form reset
-    this.userForm.reset();
-    this.formFlag = 'add';
-  }
-  initScript(){
-    //User form reset
-    this.userForm.reset();
-    this.formFlag = 'add';
-  }
-  saveUser(){
-      this.userForm.value.id= this.persons.length + 1;
-      this.persons.unshift(this.userForm.value);
-      //Save method
-      this.db.saveUsers(this.userForm.value);
-     
-      //Update database
-    //   this.db.updateUser(this.userForm.value);
-    //   var index = this.persons.findIndex(x => x.id== this.userForm.value.id);
-    //   if (index !== -1) {
-    //     this.persons[index] = this.userForm.value;
-  
-    // }
-    // this.reloadItems(this.params);
-    //Close modal
-    // this.modalClose.nativeElement.click();
-    //User form reset
-    this.userForm.reset();
-  }
-
-  //Get data while edit
-  getData(item)
-  {
-    //Here you can fetch data from database
-    this.userForm.patchValue(item);
-    this.formFlag = 'edit';
-  }
-
-  delData(item){
-    //Call service
-    this.db.deleteUser(item);
-          //Delete from array
-    this.persons.splice(this.persons.indexOf(item), 1);
-    // this.reloadItems(this.params);
-  }
 }
 
 export class Script{
@@ -184,10 +113,9 @@ export class Script{
   q9: any;
   q10: any;
   q11: any;
-  q12: any;
-  q13: any;
+  dispose: any;
+  // q13: any;
   // q14: any;
   othersystems:any;
   timetocall:any;
-  emailaddress:any;
 }
