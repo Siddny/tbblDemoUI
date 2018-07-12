@@ -1,0 +1,6 @@
+{
+  "/lol": {
+    "target": "http://localhost",
+    "secure": false
+  }
+}
