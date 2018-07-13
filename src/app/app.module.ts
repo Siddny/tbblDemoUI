@@ -13,6 +13,7 @@ import { Http, RequestOptions } from '@angular/http';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
 
 import { environment } from '../environments/environment';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 // material imports
 import { MatStepperModule } from '@angular/material';
@@ -47,6 +48,9 @@ import {MatRadioModule} from '@angular/material/radio';
 
 import { AppComponent } from './app.component';
 import  { ServiceService } from './services/service.service';
+
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireModule } from 'angularfire2';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig(), http, options);
@@ -86,6 +90,9 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   	MatCheckboxModule,
   	MatExpansionModule,
   	MatProgressBarModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
 
   providers: [
