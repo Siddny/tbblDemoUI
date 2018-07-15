@@ -18,7 +18,7 @@
               <ng-template matStepperIcon="edit">
                 <mat-icon>check</mat-icon>
               </ng-template>
-            <mat-step>   
+            <mat-step editable="false">   
             <!-- Q1   -->
             <!-- step 0 -->
               Hello, Good Morning/afternoon/evening. My Name is Cynthia  Calling you from ABC, could I speak to Mr./Mrs/Ms./Dr./Prof. 
@@ -44,7 +44,7 @@
                     <button mat-raised-button (click)="move(13)" style="background-color: lightgreen;">Proceed</button>
                   </form> -->
               </mat-step>
-            <mat-step>
+            <mat-step editable="false">
               <!-- Q2 -->
             <!-- step 1 -->
              Can I talk to Mr./Mrs/Ms./Dr./Prof. at some other date and time?
@@ -63,10 +63,10 @@
                       <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
                     <br>
-                    <button mat-raised-button (click)="move(13)" style="background-color: lightgreen;">Proceed</button>
+                    <button mat-raised-button (click)="move(11)" style="background-color: lightgreen;">Proceed</button>
                   </form>
             </mat-step>
-            <mat-step>
+            <mat-step editable="false">
               <!-- Q3 -->
               <!-- step 2 -->
                Its about ABC and the benefits your company can acquire from us working together. Which is offering a solution that will significantly reduce your IT infrastructure costs while ensuring reliability and enhanced security through the services we offer. Are you interested? 
@@ -76,7 +76,7 @@
                 <mat-radio-button value="NO" (click)="move(12)">NO</mat-radio-button><br>
               </mat-radio-group>
             </mat-step>
-            <mat-step>
+            <mat-step editable="false">
               <!-- Q4 -->
               <!-- step 3 -->
               <b>Thank you Charles Mwasambu, Have you heard about ABC?</b>
@@ -88,7 +88,7 @@
               <br>
               ABC is a backup service provider that offers you affordable & secure backup solutions. It also offers leased server services so customers don’t have to invest in physical servers in their offices which are managed by ABC, 24/ 7 
             </mat-step>
-            <mat-step>
+            <mat-step editable="false">
               <!-- Q5 -->
               <!-- step 4 -->
               What's your take on these ABC Services? 
@@ -105,7 +105,7 @@
                 <button mat-raised-button (click)="move(12)" value="NO" style="background-color: red;">NO</button>
               </div>
             </mat-step>
-            <mat-step>
+            <mat-step editable="false">
               <!-- Q6 -->
               <!-- step 5 -->
               So I believe securing your business information is extremely critical. How do you back up your business data?
@@ -124,7 +124,7 @@
                 <button mat-raised-button (click)="move(6)" style="background-color: lightgreen;">Proceed</button>
               </form>
             </mat-step>
-            <mat-step>
+            <mat-step editable="false">
               <!-- Q7 -->
               <!-- step 6 -->
               With that (Personalize client name), you do agree that your business data is extremely important for your business & needs back up?
@@ -134,7 +134,7 @@
                 <mat-radio-button value="Disagree" (click)="move(7)">Disagree</mat-radio-button><br>
               </mat-radio-group>
             </mat-step>
-            <mat-step>
+            <mat-step editable="false">
               <!-- Q8 -->
               <!-- step 7 -->
               You also agree that that our service is very affordable, right?
@@ -144,7 +144,7 @@
                 <mat-radio-button value="Disagree" (click)="move(8)">Disagree</mat-radio-button><br>
               </mat-radio-group>
             </mat-step>
-            <mat-step>
+            <mat-step editable="false">
               <!-- Q9 -->
               <!-- step 8 -->
               Fantastic. If you’d so kind as to giving us an appropriate time in the week one of our business executives will come over to discuss the solution in detail. 
@@ -154,7 +154,7 @@
                 <mat-radio-button value="NO" (click)="move(12)">NO</mat-radio-button><br>
               </mat-radio-group>
             </mat-step>
-            <mat-step>
+            <mat-step editable="false">
               <!-- Q10 -->
               <!-- step 9 -->
               Kindly assist us with your email address to sent an appointment invite whereby one of our representatives will visit you and take you through the process of registration / set up and get you ready for the services. 
@@ -165,7 +165,7 @@
               </form>
                 <button mat-raised-button (click)="move(10)" style="background-color: lightgreen;">Proceed</button>
             </mat-step>
-            <mat-step>
+            <mat-step editable="false">
               <!-- Q11 -->
               <!-- step 10 -->
               Is there any question you would like me to address with regards to our Services / or any clarification on the information I have given you? 
@@ -183,7 +183,7 @@
                 <button mat-raised-button (click)="move(12)" style="background-color: lightgreen;">Proceed</button>
               </form>
             </mat-step>
-            <mat-step>
+            <mat-step editable="false">
               <!-- Dispose -->
               <!-- step 11 -->
               <mat-radio-group [(ngModel)]="new_script.dispose" name="dispose">
@@ -196,9 +196,9 @@
                 <mat-radio-button value="Voice mail">Voice mail</mat-radio-button><br>
               </mat-radio-group>
               <br>
-              <button mat-raised-button (click)="postScript()" style="background-color: red;">End</button> 
+              <button mat-raised-button (click)="postScript();stepper.reset()" style="background-color: #f54d38;">End</button> 
             </mat-step>
-            <mat-step>
+            <mat-step editable="false">
               <!-- END OF CALL -->
               <!-- step 12 -->
               Well Charles Mwasambu, thank you for your time, it's been a pleasure talking to you. 
@@ -206,13 +206,13 @@
                
               Have a good day. Good bye. 
               <br>
-              <button mat-raised-button (click)="postScript();stepper.reset()" style="background-color: red;">End Call</button> 
+              <button mat-raised-button (click)="postScript();stepper.reset()" style="background-color: #f54d38;">End Call</button> 
             </mat-step>
           </mat-horizontal-stepper>
         </mat-card>
         <mat-card class="mt-1">
           <div>
-            <button mat-raised-button (click)="getCsvs();stepper.reset()" style="background-color: lightgreen;"> Generate Report</button>
+            <button mat-raised-button (click)="getCsvs();" style="background-color: lightgreen;"> Generate Report</button>
           </div>
         </mat-card>
       </main>
