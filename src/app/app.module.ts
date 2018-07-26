@@ -49,8 +49,16 @@ import {MatRadioModule} from '@angular/material/radio';
 import { AppComponent } from './app.component';
 import  { ServiceService } from './services/service.service';
 
+import { routing } from './app.routing';
+
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireModule } from 'angularfire2';
+import { LoginComponent } from './components/login/login.component';
+import { 
+    LandingComponent, 
+    NewClientDialog,
+  } from './components/landing/landing.component';
+import { CallsComponent } from './components/calls/calls.component';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig(), http, options);
@@ -60,9 +68,14 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
 
   declarations: [
     AppComponent,
+    LoginComponent,
+    LandingComponent,
+    CallsComponent,
+    NewClientDialog,
   ],
 
   imports: [
+    routing,
     BrowserModule,
     BrowserAnimationsModule,
     MatNativeDateModule,
@@ -102,6 +115,10 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   ],
 
   bootstrap: [AppComponent],
+
+  entryComponents: [
+    NewClientDialog,
+  ],
 
   schemas: [
     NO_ERRORS_SCHEMA,

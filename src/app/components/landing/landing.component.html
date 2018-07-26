@@ -1,0 +1,38 @@
+<div class="container-fluid">
+	<div class="row">
+      <div class="col-md-12" style="align-content: center;">
+        <h2>Techno Brain BPO</h2>
+        <!-- <span class="spacer"></span>
+        <img class="img img-responsive" src="assets/images/tbbl.jpg"> -->
+      </div>
+    </div>
+	<div class="row">
+		<mat-card class="col-md-6">
+		<mat-toolbar class="mat-elevation-z3" style="background-color: #ffffff; margin-bottom: 4px;">
+			<h4>New clients</h4>
+			<span class="spacer"></span>
+			<mat-chip-list>
+			  <mat-chip (click)="openClientDialog()" style="background-color: #d7d652;">
+			  	<mat-icon>add</mat-icon> Add new Client
+			  </mat-chip>
+			</mat-chip-list>
+		</mat-toolbar>
+		
+		<div *ngFor="let item of clients">
+			<mat-list role="list">
+			  <mat-list-item role="listitem">
+			  	<!-- <span>{{item.name}}</span> -->
+			  	<!-- <span class="spacer"></span> -->
+			  	<span> {{item.phone}}</span>
+			  	<span class="spacer"></span>
+			  	<button mat-button routerLink="/call">Call</button>
+			  </mat-list-item>
+			</mat-list>
+		</div>
+
+		</mat-card>
+		<mat-card class="col-md-6">
+				to be called
+		</mat-card>
+	</div>
+</div>
