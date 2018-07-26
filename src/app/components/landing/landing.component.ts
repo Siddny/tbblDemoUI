@@ -27,10 +27,9 @@ export class LandingComponent implements OnInit {
   	})
   }
 
-  openClientDialog(item): void {
+  openClientDialog(): void {
     let dialogRef = this.dialog.open(NewClientDialog, {
       width: '600px',
-      data: {object: item}
     });
     dialogRef.afterClosed().subscribe(result => {
       this.getClients();

@@ -117,10 +117,10 @@ export class Script{
   q7: any;
   q8: any;
   q9: any;
-  q10email: any;
-  q11: any;
+  q10: any;
+  q11email: any;
   dispose: any;
-  // q13: any;
+  q12: any;
   // q14: any;
   othersystems:any;
   timetocall:any;
