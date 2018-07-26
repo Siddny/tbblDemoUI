@@ -187,6 +187,11 @@
 				<!-- escalation? -->
               	<!-- step 12 -->
 				Is this call an escalation?
+				<br>
+                <mat-radio-group [(ngModel)]="new_script.escalation" name="escalation">
+                  <mat-radio-button value="YES" (click)="move(11); confirmEmail();">YES</mat-radio-button><br>
+                  <mat-radio-button value="NO" (click)="move(11)">NO</mat-radio-button><br>
+                </mat-radio-group>
             </mat-step>
             <mat-step editable="false">
               <!-- END OF CALL -->

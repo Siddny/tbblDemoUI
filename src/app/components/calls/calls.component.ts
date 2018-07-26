@@ -115,4 +115,5 @@ export class Script{
   // q14: any;
   othersystems:any;
   timetocall:any;
+  escalation: any;
 }
