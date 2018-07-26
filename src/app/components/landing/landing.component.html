@@ -1,15 +1,15 @@
-<div class="container-fluid">
+<div class="row mt-1 mb-1">
+  <mat-toolbar class="col-md-12 mat-elevation-z4" style="align-content: center; background-color: #e3e3e3;">
+    <h2 style="margin-left: 1em;">Techno Brain BPO</h2>
+    <span class="spacer"></span>
+    <button routerLink="/reports" mat-raised-button>View Reports</button>
+  </mat-toolbar>
+</div>
+<div class="container">
 	<div class="row">
-      <div class="col-md-12" style="align-content: center;">
-        <h2>Techno Brain BPO</h2>
-        <!-- <span class="spacer"></span>
-        <img class="img img-responsive" src="assets/images/tbbl.jpg"> -->
-      </div>
-    </div>
-	<div class="row">
-		<mat-card class="col-md-6">
+		<mat-card class="col-md-12">
 		<mat-toolbar class="mat-elevation-z3" style="background-color: #ffffff; margin-bottom: 4px;">
-			<h4>New clients</h4>
+			<h4> Clients</h4>
 			<span class="spacer"></span>
 			<mat-chip-list>
 			  <mat-chip (click)="openClientDialog()" style="background-color: #d7d652;">
@@ -17,7 +17,7 @@
 			  </mat-chip>
 			</mat-chip-list>
 		</mat-toolbar>
-		
+
 		<div *ngFor="let item of clients">
 			<mat-list role="list">
 			  <mat-list-item role="listitem">
@@ -25,14 +25,14 @@
 			  	<!-- <span class="spacer"></span> -->
 			  	<span> {{item.phone}}</span>
 			  	<span class="spacer"></span>
-			  	<button mat-button routerLink="/call">Call</button>
+			  	<button mat-button routerLink="/call/{{item.id}}">Call <mat-icon>call</mat-icon></button>
 			  </mat-list-item>
 			</mat-list>
 		</div>
+		</mat-card>
 
-		</mat-card>
-		<mat-card class="col-md-6">
+		<!-- <mat-card class="col-md-6">
 				to be called
-		</mat-card>
+		</mat-card> -->
 	</div>
 </div>

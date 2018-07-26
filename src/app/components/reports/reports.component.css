@@ -1,0 +1,9 @@
+.datatable {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 300px;
+}
+.spacer {
+  flex: 1 1 auto;
+}

@@ -1,11 +1,12 @@
-      <main style="margin-top: 2em;">
-        <div class="row">
-          <div class="col-md-12" style="align-content: center;">
-            <h2>Techno Brain BPO</h2>
-            <!-- <span class="spacer"></span>
-            <img class="img img-responsive" src="assets/images/tbbl.jpg"> -->
-          </div>
+        <div class="row mb-1 mt-1">
+          <mat-toolbar class="col-md-12 mat-elevation-z4" style="align-content: center; background-color: #e3e3e3;">
+            <h2 style="margin-left: 1em;">Techno Brain BPO</h2>
+            <span class="spacer"></span>
+            <button routerLink="/landing" mat-raised-button>Back to Dashboard</button>
+          </mat-toolbar>
         </div>
+
+      <main class="container">
         <mat-toolbar color="primary">
           <h2>ABC Telesales Call Script </h2>
         </mat-toolbar>
@@ -34,7 +35,7 @@
                   <br>
                   <mat-radio-group [(ngModel)]="new_script.q2" name="q2">
                     <mat-radio-button value="YES" (click)="getTime()">YES</mat-radio-button><br>
-                    <mat-radio-button value="NO" (click)="move(13)">NO</mat-radio-button><br>
+                    <mat-radio-button value="NO" (click)="move(14)">NO</mat-radio-button><br>
                   </mat-radio-group>
                   <form *ngIf="gettime">
                     <mat-form-field style="width: 50%;">
@@ -43,7 +44,7 @@
                       <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
                     <br>
-                    <button mat-raised-button (click)="move(11)" style="background-color: lightgreen;">Proceed</button>
+                    <button mat-raised-button (click)="move(12)" style="background-color: lightgreen;">Proceed</button>
                   </form>
             </mat-step>
             <mat-step editable="false">
@@ -53,7 +54,7 @@
               <br>
               <mat-radio-group [(ngModel)]="new_script.q3" name="q3">
                 <mat-radio-button value="YES" (click)="move(3)">YES</mat-radio-button><br>
-                <mat-radio-button value="NO" (click)="move(13)">NO</mat-radio-button><br>
+                <mat-radio-button value="NO" (click)="move(14)">NO</mat-radio-button><br>
               </mat-radio-group>
             </mat-step>
             <mat-step editable="false">
@@ -82,7 +83,7 @@
               <div *ngIf="poor">
                 Can we continue? (if Bad or Poor)
                 <button mat-raised-button (click)="move(5)" value="YES" style="background-color: lightgreen;">YES</button>
-                <button mat-raised-button (click)="move(13)" value="NO" style="background-color: red;">NO</button>
+                <button mat-raised-button (click)="move(14)" value="NO" style="background-color: red;">NO</button>
               </div>
             </mat-step>
             <mat-step editable="false">
@@ -114,58 +115,91 @@
                 <mat-radio-button value="Disagree" (click)="move(7)">Disagree</mat-radio-button><br>
               </mat-radio-group>
             </mat-step>
-            <mat-step editable="false">
-              <!-- Q8 -->
-              <!-- step 7 -->
-              You also agree that that our service is very affordable, right?
-              <br>
-              <mat-radio-group [(ngModel)]="new_script.q8" name="q8">
-                <mat-radio-button value="Agree" (click)="move(8)">Agree</mat-radio-button><br>
-                <mat-radio-button value="Disagree" (click)="move(8)">Disagree</mat-radio-button><br>
-              </mat-radio-group>
+
+            <mat-step editable=false>
+            	<!-- Q8 -->
+            	<!-- step 7 -->
+				Ok. And you do agree that ensuring that, it’s backed up automatically in a secure, off site location gives you a piece of mind that your business info is safe?
+            	<br>
+	              <mat-radio-group [(ngModel)]="new_script.q8" name="q8">
+	                <mat-radio-button value="Agree" (click)="move(8)">Agree</mat-radio-button><br>
+	                <mat-radio-button value="Disagree" (click)="move(8)">Disagree</mat-radio-button><br>
+	              </mat-radio-group>
             </mat-step>
+            
             <mat-step editable="false">
               <!-- Q9 -->
               <!-- step 8 -->
-              Fantastic. If you’d so kind as to giving us an appropriate time in the week one of our business executives will come over to discuss the solution in detail. 
+              You also agree that that our service is very affordable, right?
               <br>
               <mat-radio-group [(ngModel)]="new_script.q9" name="q9">
-                <mat-radio-button value="YES" (click)="move(9)">YES</mat-radio-button><br>
-                <mat-radio-button value="NO" (click)="move(13)">NO</mat-radio-button><br>
+                <mat-radio-button value="Agree" (click)="move(9)">Agree</mat-radio-button><br>
+                <mat-radio-button value="Disagree" (click)="move(9)">Disagree</mat-radio-button><br>
               </mat-radio-group>
             </mat-step>
             <mat-step editable="false">
               <!-- Q10 -->
-              <!-- step 9 -->
+              <!-- step 11 -->
+              Fantastic. If you’d so kind as to giving us an appropriate time in the week one of our business executives will come over to discuss the solution in detail. 
+              <br>
+              <mat-radio-group [(ngModel)]="new_script.q10" name="q10">
+                <mat-radio-button value="YES" (click)="move(10)">YES</mat-radio-button><br>
+                <mat-radio-button value="NO" (click)="move(14)">NO</mat-radio-button><br>
+              </mat-radio-group>
+            </mat-step>
+            <mat-step editable="false">
+              <!-- Q11-->
+              <!-- step 10 -->
               Kindly assist us with your email address to sent an appointment invite whereby one of our representatives will visit you and take you through the process of registration / set up and get you ready for the services. 
               <form>
                 <mat-form-field style="width: 100%;">
-                  <input matInput placeholder="Enter email address" [(ngModel)]="new_script.q10" name="q10">
+                  <input matInput placeholder="Enter email address" [(ngModel)]="new_script.q11email" name="q11email">
                 </mat-form-field>
               </form>
-                <button mat-raised-button (click)="move(10)" style="background-color: lightgreen;">Proceed</button>
+                <button mat-raised-button (click)="move(11)" style="background-color: lightgreen;">Proceed</button>
             </mat-step>
             <mat-step editable="false">
-              <!-- Q11 -->
-              <!-- step 10 -->
+              <!-- Q12 -->
+              <!-- step 11 -->
               Is there any question you would like me to address with regards to our Services / or any clarification on the information I have given you? 
               <br>
               <mat-radio-group>
                 <mat-radio-button value="YES" (click)="haveQuestion()">YES</mat-radio-button><br>
               </mat-radio-group>
-              <mat-radio-group [(ngModel)]="new_script.q11" name="q11">
-                <mat-radio-button value="NO" (click)="move(11)">NO</mat-radio-button><br>
+              <mat-radio-group [(ngModel)]="new_script.q12" name="q12">
+                <mat-radio-button value="NO" (click)="move(12)">NO</mat-radio-button><br>
               </mat-radio-group>
               <form *ngIf="question">
                 <mat-form-field style="width: 100%;">
-                  <textarea matInput placeholder="The question asked..." [(ngModel)]="new_script.q11" name="q11" ></textarea>
+                  <textarea matInput placeholder="The question asked..." [(ngModel)]="new_script.q12" name="q12" ></textarea>
                 </mat-form-field>
-                <button mat-raised-button (click)="move(13)" style="background-color: lightgreen;">Proceed</button>
+                <button mat-raised-button (click)="move(12)" style="background-color: lightgreen;">Proceed</button>
+              </form>
+            </mat-step>
+            <mat-step editable="false">
+				<!-- escalation? -->
+              	<!-- step 12 -->
+				Is this call an escalation?
+				<br>
+                <mat-radio-group [(ngModel)]="new_script.escalation" name="escalation">
+                  <mat-radio-button value="YES" (click)="Escalation();">YES</mat-radio-button><br>
+                  <mat-radio-button value="NO" (click)="move(14)">NO</mat-radio-button><br>
+                </mat-radio-group>
+                <form *ngIf="escalation">
+                		<small>Email address:</small><span>{{client_details.email}}</span><br>
+	                	<small>Phone number: </small><span>{{client_details.phone}}</span><br>
+               <!--  <mat-form-field style="width: 48%;">
+                  <input matInput placeholder="Email address" [(ngModel)]="new_script.q11" name="q11" >
+                </mat-form-field>
+                <mat-form-field style="width: 48%;">
+                  <input matInput placeholder="Phone number" [(ngModel)]="new_script.q11" name="q11" >
+                </mat-form-field> -->
+                <button mat-raised-button (click)="move(14)" style="background-color: lightgreen;">Proceed</button>
               </form>
             </mat-step>
             <mat-step editable="false">
               <!-- Dispose -->
-              <!-- step 11 -->
+              <!-- step 13 -->
               <mat-radio-group [(ngModel)]="new_script.dispose" name="dispose">
                 <mat-radio-button value="Phone Switched off">Phone Switched off</mat-radio-button><br>
                 <mat-radio-button value="No Answer">No Answer</mat-radio-button><br>
@@ -176,26 +210,16 @@
                 <mat-radio-button value="Voice mail">Voice mail</mat-radio-button><br>
               </mat-radio-group>
               <br>
-              <button 
+              <button
               	mat-raised-button 
               	(click)="postScript();stepper.reset();" 
               	style="background-color: #f54d38;"
 				routerLink="/landing">
-              End</button> 
-            </mat-step>
-            <mat-step>
-				<!-- escalation? -->
-              	<!-- step 12 -->
-				Is this call an escalation?
-				<br>
-                <mat-radio-group [(ngModel)]="new_script.escalation" name="escalation">
-                  <mat-radio-button value="YES" (click)="move(11); confirmEmail();">YES</mat-radio-button><br>
-                  <mat-radio-button value="NO" (click)="move(11)">NO</mat-radio-button><br>
-                </mat-radio-group>
+              End Call<mat-icon>call</mat-icon></button> 
             </mat-step>
             <mat-step editable="false">
               <!-- END OF CALL -->
-              <!-- step 13 -->
+              <!-- step 14 -->
               Well Charles Mwasambu, thank you for your time, it's been a pleasure talking to you. 
               If you have any further clarifications , feel free to contact our website www.angani.co or phone number 020 – 5230028. 
                
@@ -206,13 +230,14 @@
               	(click)="postScript();stepper.reset();" 
               	style="background-color: #f54d38;"
               	routerLink="/landing">
-              End Call</button> 
+              End Call <mat-icon>call</mat-icon></button> 
             </mat-step>
           </mat-horizontal-stepper>
         </mat-card>
-        <mat-card class="mt-1">
+
+        <!-- <mat-card class="mt-1">
           <div>
             <button mat-raised-button (click)="getCsvs();" style="background-color: lightgreen;"> Generate Report</button>
           </div>
-        </mat-card>
+        </mat-card> -->
       </main>

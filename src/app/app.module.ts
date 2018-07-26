@@ -4,6 +4,7 @@ import {
   NgModule,
   CUSTOM_ELEMENTS_SCHEMA,
   NO_ERRORS_SCHEMA,
+  forwardRef ,
 } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -35,6 +36,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatTableModule } from '@angular/material/table';
 import {
   MatNativeDateModule,
   MatFormFieldModule,
@@ -42,6 +44,7 @@ import {
 } from '@angular/material';
 import {
   FormsModule,
+  NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
 } from '@angular/forms';
 import {MatRadioModule} from '@angular/material/radio';
@@ -59,6 +62,7 @@ import {
     NewClientDialog,
   } from './components/landing/landing.component';
 import { CallsComponent } from './components/calls/calls.component';
+import { ReportsComponent } from './components/reports/reports.component';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig(), http, options);
@@ -72,6 +76,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     LandingComponent,
     CallsComponent,
     NewClientDialog,
+    ReportsComponent,
   ],
 
   imports: [
@@ -103,6 +108,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   	MatCheckboxModule,
   	MatExpansionModule,
   	MatProgressBarModule,
+    MatTableModule,
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule
@@ -112,6 +118,11 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   	HttpModule,
   	HttpClientModule,
     ServiceService,
+    { 
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: forwardRef(() => CallsComponent),
+    }
   ],
 
   bootstrap: [AppComponent],

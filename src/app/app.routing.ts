@@ -4,6 +4,7 @@ import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { CallsComponent } from './components/calls/calls.component';
+import { ReportsComponent } from './components/reports/reports.component';
 
 const appRoute: Routes = [
   {
@@ -22,8 +23,13 @@ const appRoute: Routes = [
     // canActivate: [AuthGuard],
   },
   {
-    path: 'call',
+    path: 'call/:id',
     component: CallsComponent,
+    // canActivate: [AuthGuard],
+  },
+  {
+    path: 'reports',
+    component: ReportsComponent,
     // canActivate: [AuthGuard],
   }
 ];

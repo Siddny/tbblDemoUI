@@ -59,7 +59,9 @@ export class NewClientDialog {
   }
 
   newClient(){
-  	console.log(this.new_client)
+  	this.new_client['phone'] = '+254'+this.new_client['phone'];
+  	console.log(this.new_client['phone']);
+  	console.log(this.new_client);
   	this.db.newClient(this.new_client).subscribe(data=>{
   		this.new_client = new Client();
   	})

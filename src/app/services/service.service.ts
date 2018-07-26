@@ -51,4 +51,12 @@ export class ServiceService {
     });
     return this.http.post(url, JSON.stringify(client), {headers:headers}) 
   }
+
+  getClientDetails(id){
+    let url = this.serverURL+'client/'+id+'/';
+    let headers = new Headers({
+      'Content-Type' : 'application/json',
+    });
+    return this.http.get(url, {headers:headers}).map(res=>res.json())
+  }
 }
