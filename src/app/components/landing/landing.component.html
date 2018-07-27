@@ -7,8 +7,7 @@
 </div>
 <div class="container">
 	<div class="row">
-		<mat-card class="col-md-12">
-		<mat-toolbar class="mat-elevation-z3" style="background-color: #ffffff; margin-bottom: 4px;">
+		<mat-toolbar class="col-md-12 mat-elevation-z3" style="background-color: #ffffff; margin-bottom: 4px;">
 			<h4> Clients</h4>
 			<span class="spacer"></span>
 			<mat-chip-list>
@@ -17,22 +16,32 @@
 			  </mat-chip>
 			</mat-chip-list>
 		</mat-toolbar>
-
-		<div *ngFor="let item of clients">
+	</div>
+		
+	<div class="row">
+		<mat-card *ngFor="let item of new_calls_list" class="col-md-6">
+			New Calls
 			<mat-list role="list">
 			  <mat-list-item role="listitem">
-			  	<!-- <span>{{item.name}}</span> -->
+			  	<span> {{item.phone}}</span> &nbsp;&nbsp;
+			  	<smal>{{item.name}}</smal>
 			  	<!-- <span class="spacer"></span> -->
-			  	<span> {{item.phone}}</span>
 			  	<span class="spacer"></span>
 			  	<button mat-button routerLink="/call/{{item.id}}">Call <mat-icon>call</mat-icon></button>
 			  </mat-list-item>
 			</mat-list>
-		</div>
 		</mat-card>
-
-		<!-- <mat-card class="col-md-6">
-				to be called
-		</mat-card> -->
+		<mat-card *ngFor="let item of call_backs_list" class="col-md-6">
+			Call Back
+			<mat-list role="list">
+				<mat-list-item role="listitem">
+					<span> {{item.phone}}</span> &nbsp;&nbsp;
+					<smal>{{item.name}}</smal>
+					<!-- <span class="spacer"></span> -->
+					<span class="spacer"></span>
+					<button mat-button routerLink="/call/{{item.id}}">Call <mat-icon>call</mat-icon></button>
+				</mat-list-item>
+			</mat-list>
+		</mat-card>
 	</div>
 </div>

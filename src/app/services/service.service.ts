@@ -7,8 +7,8 @@ import 'rxjs/Rx'
 @Injectable()
 export class ServiceService {
 
-  serverURL = "https://tbbldemo.herokuapp.com/";
-  // serverURL = "http://127.0.0.1:8000/";
+  // serverURL = "https://tbbldemo.herokuapp.com/";
+  serverURL = "http://127.0.0.1:8000/";
 
   constructor(private http:Http) { }
 
@@ -65,5 +65,14 @@ export class ServiceService {
       });
       return data;
     });
+  }
+
+  disposeCall(client){
+    let url = this.serverURL+'update_client/'
+    let headers = new Headers({
+      'Content-Type' : 'application/json',
+    });
+    return this.http.post(url, JSON.stringify(client), {headers:headers}) 
+    // return this.http.get(url, {headers:headers}).map(res=>res.json())
   }
 }

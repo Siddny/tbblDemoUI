@@ -11,6 +11,11 @@ export class LandingComponent implements OnInit {
 
   clients: any = [];
 
+  new_calls : any;
+  new_calls_list : any;
+  call_backs : any;
+  call_backs_list : any;
+
   constructor(
     public dialog: MatDialog,
     private db:ServiceService,
@@ -21,9 +26,25 @@ export class LandingComponent implements OnInit {
   }
 
   getClients(){
+	this.new_calls_list = [];
+	this.call_backs_list = [];
   	this.db.getClients().subscribe(data=>{
   		this.clients = data;
   		console.log(data);
+
+		let res = data.filter(item=>{
+			if (item['status'] == "NotCalled") {
+				this.new_calls = item;
+				this.new_calls_list.push(this.new_calls)
+				console.log(item);
+				return item
+			}else if (item['status'] == "CallBack") {
+				this.call_backs = item;
+				this.call_backs_list.push(this.call_backs)
+				console.log(this.call_backs);
+				return item
+			}
+		})
   	})
   }
 

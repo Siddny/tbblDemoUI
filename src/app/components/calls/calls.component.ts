@@ -39,6 +39,7 @@ export class CallsComponent implements OnInit {
   id: any;
   client_details: any;
 
+  client_call: ClientCall = new ClientCall();
   constructor(
   	private db:ServiceService,
   	private route: ActivatedRoute,
@@ -62,13 +63,16 @@ export class CallsComponent implements OnInit {
 
   postScript(){
     console.log(this.new_script);
+    console.log(this.client_call);
     console.log(this.new_script['escalation']);
     if (this.new_script['escalation'] == 'YES') {
     	this.new_script['email'] = this.client_details.email;
     	this.new_script['phone'] = this.client_details.phone;
     }
-    this.db.newScript(this.new_script).subscribe(data=>{
-      this.new_script = new Script();
+    this.client_call['client'] = this.client_details.id;
+    this.client_call['script'] = this.new_script;
+    this.db.newScript(this.client_call).subscribe(data=>{
+      this.client_call = new ClientCall();
     })
     this.showName = false;
     this.question = false;
@@ -78,6 +82,13 @@ export class CallsComponent implements OnInit {
     this.escalation = false;
   }
   
+  disposeCall(){
+  	console.log(this.client_details);
+  	this.db.disposeCall(this.client_details).subscribe(data=>{
+
+  	})
+  }
+
   move(index: number) {
     this.stepper.selectedIndex = index;
   }
@@ -105,6 +116,11 @@ export class CallsComponent implements OnInit {
   Escalation(){
   	this.escalation = !this.escalation;
   }
+}
+
+export class ClientCall{
+	script: Script;
+	client: any;
 }
 
 export class Script{
