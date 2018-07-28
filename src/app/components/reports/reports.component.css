@@ -1,9 +1,26 @@
 .datatable {
   display: flex;
   flex-direction: column;
-  max-height: 500px;
-  min-width: 300px;
+  /*max-height: 500px;*/
+  /*min-width: 300px;*/
 }
 .spacer {
   flex: 1 1 auto;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    zoom: 0.7;
+}
+td, th {
+    /*border: 1px solid #0e0e0e;*/
+    text-align: left;
+    padding-left: 1em ;
+    padding-right: 1em ;
+    padding-top: 0.2em ;
+    padding-bottom: 0.2em ;
+}
+tr:nth-child(odd) {
+    background-color: #ffffff;
 }

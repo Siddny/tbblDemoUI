@@ -64,6 +64,13 @@ import {
 import { CallsComponent } from './components/calls/calls.component';
 import { ReportsComponent } from './components/reports/reports.component';
 
+// import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { AmazingTimePickerService } from 'amazing-time-picker'; 
+
+import { AmazingTimePickerModule } from 'amazing-time-picker';
+
+import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
+
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig(), http, options);
 }
@@ -81,6 +88,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
 
   imports: [
     routing,
+    AmazingTimePickerModule,
+    AngularDateTimePickerModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatNativeDateModule,
@@ -109,6 +118,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   	MatExpansionModule,
   	MatProgressBarModule,
     MatTableModule,
+    // OwlDateTimeModule, 
+    // OwlNativeDateTimeModule,
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule

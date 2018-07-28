@@ -47,15 +47,21 @@
                     <mat-radio-button value="YES" (click)="getTime()">YES</mat-radio-button><br>
                     <mat-radio-button value="NO" (click)="move(14)">NO</mat-radio-button><br>
                   </mat-radio-group>
-                  <form *ngIf="gettime">
-                    <mat-form-field style="width: 50%;">
-                      <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="new_script.timetocall" name="timetocall">
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                      <mat-datepicker #picker></mat-datepicker>
-                    </mat-form-field>
-                    <br>
-                    <button mat-raised-button (click)="move(12)" style="background-color: lightgreen;">Proceed</button>
-                  </form>
+                  
+                  <div *ngIf="gettime">
+					<form class="row">
+					  <mat-form-field class="col-md-6">
+					    <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="new_script.datetocall" name="datetocall">
+					      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+					    <mat-datepicker #picker></mat-datepicker>
+					  </mat-form-field>
+					  <div class="col-md-6">
+						Time:  <input type="time" atp-time-picker [(ngModel)]="new_script.timetocall" name="timetocall"/>
+					  </div>
+					  <br>
+					</form>
+					<button mat-raised-button (click)="move(12)" style="background-color: lightgreen;">Proceed</button>
+                  </div>
             </mat-step>
             <mat-step editable="false">
               <!-- Q3 -->
@@ -70,7 +76,7 @@
             <mat-step editable="false">
               <!-- Q4 -->
               <!-- step 3 -->
-              <b>Thank you Charles Mwasambu, Have you heard about ABC?</b>
+              <b>Thank you <b>{{client_details?.name}}</b>, Have you heard about ABC?</b>
               <br>
               <mat-radio-group [(ngModel)]="new_script.q4" name="q4">
                 <mat-radio-button value="YES" (click)="move(4)">YES</mat-radio-button><br>
@@ -118,7 +124,7 @@
             <mat-step editable="false">
               <!-- Q7 -->
               <!-- step 6 -->
-              With that (Personalize client name), you do agree that your business data is extremely important for your business & needs back up?
+              With that <b>Mr./Mrs/Ms./Dr./Prof. {{client_details?.name}}</b>, you do agree that your business data is extremely important for your business & needs back up?
               <br>
               <mat-radio-group [(ngModel)]="new_script.q7" name="q7">
                 <mat-radio-button value="Agree" (click)="move(7)">Agree</mat-radio-button><br>
@@ -230,9 +236,9 @@
             <mat-step editable="false">
               <!-- END OF CALL -->
               <!-- step 14 -->
-              Well Charles Mwasambu, thank you for your time, it's been a pleasure talking to you. 
+              Well <b>{{client_details?.name}}</b>, thank you for your time, it's been a pleasure talking to you. 
               If you have any further clarifications , feel free to contact our website www.angani.co or phone number 020 – 5230028. 
-               
+
               Have a good day. Good bye. 
               <br>
               <button 

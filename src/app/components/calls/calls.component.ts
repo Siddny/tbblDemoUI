@@ -5,6 +5,7 @@ import { MatIconRegistry } from '@angular/material';
 import { MatStepper } from '@angular/material';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+// import { AmazingTimePickerService } from 'amazing-time-picker'; 
 
 import  { ServiceService } from '../../services/service.service';
 
@@ -38,11 +39,14 @@ export class CallsComponent implements OnInit {
 
   id: any;
   client_details: any;
-
+  
+  mytime: any;
+  
   client_call: ClientCall = new ClientCall();
   constructor(
   	private db:ServiceService,
   	private route: ActivatedRoute,
+
   	) { }
 
   ngOnInit() {
@@ -139,6 +143,7 @@ export class Script{
   q12: any;
   // q14: any;
   othersystems:any;
+  datetocall:any;
   timetocall:any;
   escalation: any;
   email: any;
