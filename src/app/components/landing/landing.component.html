@@ -19,9 +19,9 @@
 	</div>
 		
 	<div class="row">
-		<mat-card *ngFor="let item of new_calls_list" class="col-md-6">
+		<mat-card class="col-md-6">
 			New Calls
-			<mat-list role="list">
+			<mat-list role="list" *ngFor="let item of new_calls_list" >
 			  <mat-list-item role="listitem">
 			  	<span> {{item.phone}}</span> &nbsp;&nbsp;
 			  	<smal>{{item.name}}</smal>
@@ -31,10 +31,10 @@
 			  </mat-list-item>
 			</mat-list>
 		</mat-card>
-		<mat-card *ngFor="let item of call_backs_list" class="col-md-6">
+		<mat-card class="col-md-6">
 			Call Back
 			<mat-list role="list">
-				<mat-list-item role="listitem">
+				<mat-list-item role="listitem" *ngFor="let item of call_backs_list" >
 					<span> {{item.phone}}</span> &nbsp;&nbsp;
 					<smal>{{item.name}}</smal>
 					<!-- <span class="spacer"></span> -->
