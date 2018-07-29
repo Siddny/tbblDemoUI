@@ -15,109 +15,109 @@
 		id Column
 	    <ng-container matColumnDef="id">
 	      <mat-header-cell *matHeaderCellDef> # </mat-header-cell>
-	      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+	      <mat-cell *matCellDef="let element"> {{element?.id}} </mat-cell>
 	    </ng-container>
 
 	    q1 Column
 	    <ng-container matColumnDef="q1">
 	      <mat-header-cell *matHeaderCellDef> 1. </mat-header-cell>
-	      <mat-cell *matCellDef="let element"> {{element.q1}} </mat-cell>
+	      <mat-cell *matCellDef="let element"> {{element?.q1}} </mat-cell>
 	    </ng-container>
 
 	    q2 Column
 	    <ng-container matColumnDef="q2">
 	      <mat-header-cell *matHeaderCellDef> 2 </mat-header-cell>
-	      <mat-cell *matCellDef="let element"> {{element.q2}} </mat-cell>
+	      <mat-cell *matCellDef="let element"> {{element?.q2}} </mat-cell>
 	    </ng-container>
 
 	    q3 Column
 	    <ng-container matColumnDef="q3">
 	      <mat-header-cell *matHeaderCellDef> 3 </mat-header-cell>
-	      <mat-cell *matCellDef="let element"> {{element.q3}} </mat-cell>
+	      <mat-cell *matCellDef="let element"> {{element?.q3}} </mat-cell>
 	    </ng-container>
 
 	    q4 Column
 	    <ng-container matColumnDef="q4">
 	      <mat-header-cell *matHeaderCellDef> 4 </mat-header-cell>
-	      <mat-cell *matCellDef="let element"> {{element.q4}} </mat-cell>
+	      <mat-cell *matCellDef="let element"> {{element?.q4}} </mat-cell>
 	    </ng-container>
 
 		q5 Column
 	    <ng-container matColumnDef="q5">
 	      <mat-header-cell *matHeaderCellDef> 5 </mat-header-cell>
-	      <mat-cell *matCellDef="let element"> {{element.q5}} </mat-cell>
+	      <mat-cell *matCellDef="let element"> {{element?.q5}} </mat-cell>
 	    </ng-container>
 
 	    q6 Column
 	    <ng-container matColumnDef="q6">
 	      <mat-header-cell *matHeaderCellDef> 6 </mat-header-cell>
-	      <mat-cell *matCellDef="let element"> {{element.q6}} </mat-cell>
+	      <mat-cell *matCellDef="let element"> {{element?.q6}} </mat-cell>
 	    </ng-container>
 
 	    q7 Column
 	    <ng-container matColumnDef="q7">
 	      <mat-header-cell *matHeaderCellDef> 7 </mat-header-cell>
-	      <mat-cell *matCellDef="let element"> {{element.q7}} </mat-cell>
+	      <mat-cell *matCellDef="let element"> {{element?.q7}} </mat-cell>
 	    </ng-container>
 
 	    q8 Column
 	    <ng-container matColumnDef="q8">
 	      <mat-header-cell *matHeaderCellDef> 8 </mat-header-cell>
-	      <mat-cell *matCellDef="let element"> {{element.q8}} </mat-cell>
+	      <mat-cell *matCellDef="let element"> {{element?.q8}} </mat-cell>
 	    </ng-container>
 
 	    q9 Column
 	    <ng-container matColumnDef="q9">
 	      <mat-header-cell *matHeaderCellDef> 9 </mat-header-cell>
-	      <mat-cell *matCellDef="let element"> {{element.q9}} </mat-cell>
+	      <mat-cell *matCellDef="let element"> {{element?.q9}} </mat-cell>
 	    </ng-container>
 	
 		q10email Column
 	    <ng-container matColumnDef="q10email">
 	      <mat-header-cell *matHeaderCellDef> 10 </mat-header-cell>
-	      <mat-cell *matCellDef="let element"> {{element.q10email}} </mat-cell>
+	      <mat-cell *matCellDef="let element"> {{element?.q10email}} </mat-cell>
 	    </ng-container>
 
 	    q11 Column
 	    <ng-container matColumnDef="q11">
 	      <mat-header-cell *matHeaderCellDef> 11 </mat-header-cell>
-	      <mat-cell *matCellDef="let element"> {{element.q11}} </mat-cell>
+	      <mat-cell *matCellDef="let element"> {{element?.q11}} </mat-cell>
 	    </ng-container>
 
 	    dispose Column
 	    <ng-container matColumnDef="dispose">
 	      <mat-header-cell *matHeaderCellDef> Dispose </mat-header-cell>
-	      <mat-cell *matCellDef="let element"> {{element.dispose}} </mat-cell>
+	      <mat-cell *matCellDef="let element"> {{element?.dispose}} </mat-cell>
 	    </ng-container>
 
 	    othersystems Column
 	    <ng-container matColumnDef="othersystems">
 	      <mat-header-cell *matHeaderCellDef> Other Systems </mat-header-cell>
-	      <mat-cell *matCellDef="let element"> {{element.othersystems}} </mat-cell>
+	      <mat-cell *matCellDef="let element"> {{element?.othersystems}} </mat-cell>
 	    </ng-container>
 
 	    timetocall Column
 	    <ng-container matColumnDef="timetocall">
 	      <mat-header-cell *matHeaderCellDef> When to call </mat-header-cell>
-	      <mat-cell *matCellDef="let element"> {{element.timetocall | date}} </mat-cell>
+	      <mat-cell *matCellDef="let element"> {{element?.timetocall | date}} </mat-cell>
 	    </ng-container>
 
 	    escalation Column
 	    <ng-container matColumnDef="escalation">
 	      <mat-header-cell *matHeaderCellDef> Escalation </mat-header-cell>
-	      <mat-cell *matCellDef="let element"> {{element.escalation}} </mat-cell>
+	      <mat-cell *matCellDef="let element"> {{element?.escalation}} </mat-cell>
 	    </ng-container>
 
 	    email Column
 	    <ng-container matColumnDef="email">
 	      <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
-	      <mat-cell *matCellDef="let element"> <a href="mailto:{{element.email}}"> {{element.email}} </a> </mat-cell>
+	      <mat-cell *matCellDef="let element"> <a href="mailto:{{element?.email}}"> {{element?.email}} </a> </mat-cell>
 	    </ng-container>
 
 	    phone Column
 	    <ng-container matColumnDef="phone">
 	      <mat-header-cell *matHeaderCellDef> Phone </mat-header-cell>
-	      <mat-cell *matCellDef="let element"> <a href="tel:{{element.phone}}"> {{element.phone}} </a> </mat-cell>
+	      <mat-cell *matCellDef="let element"> <a href="tel:{{element?.phone}}"> {{element?.phone}} </a> </mat-cell>
 	    </ng-container>
 
 	    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -139,6 +139,8 @@
 			<th>8</th>
 			<th>9</th>
 			<th>10</th>
+			<th>Visit Date</th>
+			<th>Visit Time</th>
 			<th>11</th>
 			<th>Dispose</th>
 			<th>OtherSystems</th>
@@ -147,27 +149,31 @@
 			<th>Escalation</th>
 			<th>Email</th>
 			<th>Phone</th>
+			<th>Client</th>
 		  </tr>
 		  <tr *ngFor="let element of scripts">
-		    <td>{{element.id}}</td>
-			<td>{{element.q1}}</td>
-			<td>{{element.q2}}</td>
-			<td>{{element.q3}}</td>
-			<td>{{element.q4}}</td>
-			<td>{{element.q5}}</td>
-			<td>{{element.q6}}</td>
-			<td>{{element.q7}}</td>
-			<td>{{element.q8}}</td>
-			<td>{{element.q9}}</td>
-			<td>{{element.q10email}}</td>
-			<td>{{element.q11}}</td>
-			<td>{{element.dispose}}</td>
-			<td>{{element.othersystems}}</td>
-			<td>{{element.datetocall | date : fullDate }}</td>
-			<td>{{element.timetocall}}</td>
-			<td>{{element.escalation}}</td>
-			<td><a href="mailto:{{element.email}}"> {{element.email}} </a></td>
-			<td><a href="tel:{{element.phone}}"> {{element.phone}} </a></td>
+		    <td>{{element?.id}}</td>
+			<td>{{element?.q1}}</td>
+			<td>{{element?.q2}}</td>
+			<td>{{element?.q3}}</td>
+			<td>{{element?.q4}}</td>
+			<td>{{element?.q5}}</td>
+			<td>{{element?.q6}}</td>
+			<td>{{element?.q7}}</td>
+			<td>{{element?.q8}}</td>
+			<td>{{element?.q9}}</td>
+			<td>{{element?.q10}}</td>
+			<td>{{element?.visitdate | date : fullDate}}</td>
+			<td>{{element?.visittime}}</td>
+			<td>{{element?.q11email}}</td>
+			<td>{{element?.dispose}}</td>
+			<td>{{element?.othersystems}}</td>
+			<td>{{element?.datetocall | date : fullDate }}</td>
+			<td>{{element?.timetocall}}</td>
+			<td>{{element?.escalation}}</td>
+			<td><a href="mailto:{{element?.email}}"> {{element?.email}} </a></td>
+			<td><a href="tel:{{element?.phone}}"> {{element?.phone}} </a></td>
+			<td>{{element?.client_name}}</td>
 		  </tr>
 		</table>
 	</div>

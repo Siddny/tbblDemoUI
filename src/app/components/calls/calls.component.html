@@ -19,7 +19,7 @@
             <mat-step editable="false">   
             <!-- Q1   -->
             <!-- step 0 -->
-              Hello, Good Morning/afternoon/evening. My Name is Cynthia  Calling you from ABC, could I speak to Mr./Mrs/Ms./Dr./Prof. 
+              Hello, Good Morning/afternoon/evening. My Name is <b>Cynthia</b> Calling you from ABC, could I speak to Mr./Mrs/Ms./Dr./Prof. 
               <br>
               <div>
                 <mat-radio-group [(ngModel)]="new_script.q1" name="q1">
@@ -34,7 +34,8 @@
 					<button 
 						mat-raised-button 
 						routerLink="/landing"
-						(click)="disposeCall();">Call Back Later</button>
+						(click)="callBackLater();">
+					Call Back Later</button>
               	</mat-card>
               </div>
               </mat-step>
@@ -45,7 +46,8 @@
                   <br>
                   <mat-radio-group [(ngModel)]="new_script.q2" name="q2">
                     <mat-radio-button value="YES" (click)="getTime()">YES</mat-radio-button><br>
-                    <mat-radio-button value="NO" (click)="move(14)">NO</mat-radio-button><br>
+                    <!-- <mat-radio-button value="NO" (click)="move(13)">NO</mat-radio-button><br> -->
+                    <mat-radio-button value="NO" (click)="DisposeQ2()">NO</mat-radio-button><br>
                   </mat-radio-group>
                   
                   <div *ngIf="gettime">
@@ -60,8 +62,26 @@
 					  </div>
 					  <br>
 					</form>
-					<button mat-raised-button (click)="move(12)" style="background-color: lightgreen;">Proceed</button>
+					<button mat-raised-button (click)="callBackLater();move(12)" style="background-color: lightgreen;">Proceed</button>
                   </div>
+
+                  <div *ngIf="disposeQ2">
+	              	<mat-card style="background-color: #e3e3e3;">
+	              		<small>Dispose</small><br>
+						<mat-radio-group [(ngModel)]="new_script.dispose" name="dispose">
+			                <mat-radio-button value="Number doesn’t belongs to the customer">Number doesn’t belongs to the customer </mat-radio-button><br>
+			                <mat-radio-button value="Not interested">Not interested </mat-radio-button><br>
+			            </mat-radio-group>
+						<button
+							mat-raised-button 
+							(click)="completeCall();postScript();"
+							style="background-color: #f54d38;"
+			              	routerLink="/landing">
+			              	End Call 
+              				<mat-icon>call</mat-icon>
+              			</button>
+	              	</mat-card>
+	              </div>
             </mat-step>
             <mat-step editable="false">
               <!-- Q3 -->
@@ -70,8 +90,44 @@
               <br>
               <mat-radio-group [(ngModel)]="new_script.q3" name="q3">
                 <mat-radio-button value="YES" (click)="move(3)">YES</mat-radio-button><br>
-                <mat-radio-button value="NO" (click)="move(14)">NO</mat-radio-button><br>
+                <mat-radio-button value="NO" (click)="DisposeQ3()">NO</mat-radio-button><br>
               </mat-radio-group>
+
+              <div *ngIf="disposeQ3">
+              	<mat-card style="background-color: #e3e3e3;">
+              		<small>Dispose</small><br>
+					<mat-radio-group [(ngModel)]="new_script.dispose" name="dispose">
+		                <mat-radio-button value="Call Back" (click)="getTimeQ3()">Call Back</mat-radio-button><br>
+		                <mat-radio-button value="Not interested" (click)="notIntQ3()">Not interested </mat-radio-button><br>
+		            </mat-radio-group>
+	              <div *ngIf="gettimeQ3">
+					<form class="row">
+					  <mat-form-field class="col-md-6">
+					    <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="new_script.datetocall" name="datetocall">
+					      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+					    <mat-datepicker #picker></mat-datepicker>
+					  </mat-form-field>
+					  <div class="col-md-6">
+						Time:  <input type="time" atp-time-picker [(ngModel)]="new_script.timetocall" name="timetocall"/>
+					  </div>
+					  <br>
+					</form>
+	                  <button
+							mat-raised-button 
+							(click)="callBackLater();move(12)"
+							style="background-color: lightgreen;">
+			              	Proceed 
+	          		  </button>
+                  </div>
+					<button
+                  		*ngIf="not_intQ3"
+						mat-raised-button 
+						(click)="completeCall();move(12);"
+		              	style="background-color: lightgreen;">
+			            Proceed 
+          			</button>
+              	</mat-card>
+              </div>
             </mat-step>
             <mat-step editable="false">
               <!-- Q4 -->
@@ -99,7 +155,23 @@
               <div *ngIf="poor">
                 Can we continue? (if Bad or Poor)
                 <button mat-raised-button (click)="move(5)" value="YES" style="background-color: lightgreen;">YES</button>
-                <button mat-raised-button (click)="move(14)" value="NO" style="background-color: red;">NO</button>
+                <button mat-raised-button (click)="DisposeQ5()" value="NO" style="background-color: red;">NO</button>
+
+                  <div *ngIf="disposeQ5">
+	              	<mat-card style="background-color: #e3e3e3;">
+	              		<small>Dispose</small><br>
+						<mat-radio-group [(ngModel)]="new_script.dispose" name="dispose">
+			                <mat-radio-button value="Not interested" (click)="notIntQ5()">Not interested </mat-radio-button><br>
+			            </mat-radio-group>
+						<button
+							*ngIf="not_intQ5"
+							mat-raised-button 
+							(click)="completeCall();move(12);"
+			              	style="background-color: lightgreen;">
+				            Proceed 
+              			</button>
+	              	</mat-card>
+	              </div>
               </div>
             </mat-step>
             <mat-step editable="false">
@@ -159,9 +231,61 @@
               Fantastic. If you’d so kind as to giving us an appropriate time in the week one of our business executives will come over to discuss the solution in detail. 
               <br>
               <mat-radio-group [(ngModel)]="new_script.q10" name="q10">
-                <mat-radio-button value="YES" (click)="move(10)">YES</mat-radio-button><br>
-                <mat-radio-button value="NO" (click)="move(14)">NO</mat-radio-button><br>
+                <mat-radio-button value="YES" (click)="VisitDay()">YES</mat-radio-button><br>
+                <mat-radio-button value="NO" (click)="DisposeQ10()">NO</mat-radio-button><br>
               </mat-radio-group>
+
+              <div *ngIf="visitDay">
+				<form class="row">
+				  <mat-form-field class="col-md-6">
+				    <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="new_script.visitdate" name="visitdate">
+				      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+				    <mat-datepicker #picker></mat-datepicker>
+				  </mat-form-field>
+				  <div class="col-md-6">
+					Time:  <input type="time" atp-time-picker [(ngModel)]="new_script.visittime" name="visittime"/>
+				  </div>
+				  <br>
+				</form>
+				<button mat-raised-button (click)="move(10)" style="background-color: lightgreen;">Proceed</button>
+              </div>
+
+			  <div *ngIf="disposeQ10">
+              	<mat-card style="background-color: #e3e3e3;">
+              		<small>Dispose</small><br>
+					<mat-radio-group [(ngModel)]="new_script.dispose" name="dispose">
+		                <mat-radio-button value="Call Back" (click)="getTimeQ10()">Call Back</mat-radio-button><br>
+		                <mat-radio-button value="Not interested" (click)="notIntQ10()">Not interested </mat-radio-button><br>
+		            </mat-radio-group>
+	              <div *ngIf="gettimeQ10">
+					<form class="row">
+					  <mat-form-field class="col-md-6">
+					    <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="new_script.datetocall" name="datetocall">
+					      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+					    <mat-datepicker #picker></mat-datepicker>
+					  </mat-form-field>
+					  <div class="col-md-6">
+						Time:  <input type="time" atp-time-picker [(ngModel)]="new_script.timetocall" name="timetocall"/>
+					  </div>
+					  <br>
+					</form>
+					<button
+						mat-raised-button 
+						(click)="callBackLater();move(12)"
+						style="background-color: lightgreen;">
+		              	Proceed 
+	          		</button>
+                  </div>
+					<button
+						*ngIf="not_intQ10"
+						mat-raised-button 
+						(click)="completeCall();move(12);"
+						style="background-color: lightgreen;">
+		              	Proceed 
+          			</button>
+              	</mat-card>
+              </div>
+
             </mat-step>
             <mat-step editable="false">
               <!-- Q11-->
@@ -169,7 +293,7 @@
               Kindly assist us with your email address to sent an appointment invite whereby one of our representatives will visit you and take you through the process of registration / set up and get you ready for the services. 
               <form>
                 <mat-form-field style="width: 100%;">
-                  <input matInput placeholder="Enter email address" [(ngModel)]="new_script.q11email" name="q11email">
+                  <input matInput placeholder="Confirm email address" [(ngModel)]="client_email" name="client_email">
                 </mat-form-field>
               </form>
                 <button mat-raised-button (click)="move(11)" style="background-color: lightgreen;">Proceed</button>
@@ -183,23 +307,23 @@
                 <mat-radio-button value="YES" (click)="haveQuestion()">YES</mat-radio-button><br>
               </mat-radio-group>
               <mat-radio-group [(ngModel)]="new_script.q12" name="q12">
-                <mat-radio-button value="NO" (click)="move(12)">NO</mat-radio-button><br>
+                <mat-radio-button value="NO" (click)="completeCall();move(12)">NO</mat-radio-button><br>
               </mat-radio-group>
               <form *ngIf="question">
                 <mat-form-field style="width: 100%;">
                   <textarea matInput placeholder="The question asked..." [(ngModel)]="new_script.q12" name="q12" ></textarea>
                 </mat-form-field>
-                <button mat-raised-button (click)="move(12)" style="background-color: lightgreen;">Proceed</button>
+                <button mat-raised-button (click)="completeCall();move(12)" style="background-color: lightgreen;">Proceed</button>
               </form>
             </mat-step>
-            <mat-step editable="false">
+            <mat-step editable="false" label="Es">
 				<!-- escalation? -->
               	<!-- step 12 -->
 				Is this call an escalation?
 				<br>
                 <mat-radio-group [(ngModel)]="new_script.escalation" name="escalation">
                   <mat-radio-button value="YES" (click)="Escalation();">YES</mat-radio-button><br>
-                  <mat-radio-button value="NO" (click)="move(14)">NO</mat-radio-button><br>
+                  <mat-radio-button value="NO" (click)="move(13)">NO</mat-radio-button><br>
                 </mat-radio-group>
                 <form *ngIf="escalation">
                 		<small>Email address:</small><span>{{client_details.email}}</span><br>
@@ -210,12 +334,12 @@
                 <mat-form-field style="width: 48%;">
                   <input matInput placeholder="Phone number" [(ngModel)]="new_script.q11" name="q11" >
                 </mat-form-field> -->
-                <button mat-raised-button (click)="move(14)" style="background-color: lightgreen;">Proceed</button>
+                <button mat-raised-button (click)="move(13)" style="background-color: lightgreen;">Proceed</button>
               </form>
             </mat-step>
-            <mat-step editable="false">
-              <!-- Dispose -->
-              <!-- step 13 -->
+            <!-- <mat-step editable="false">
+              Dispose
+              step 13
               <mat-radio-group [(ngModel)]="new_script.dispose" name="dispose">
                 <mat-radio-button value="Phone Switched off">Phone Switched off</mat-radio-button><br>
                 <mat-radio-button value="No Answer">No Answer</mat-radio-button><br>
@@ -232,10 +356,10 @@
               	style="background-color: #f54d38;"
 				routerLink="/landing">
               End Call<mat-icon>call</mat-icon></button> 
-            </mat-step>
+            </mat-step> -->
             <mat-step editable="false">
               <!-- END OF CALL -->
-              <!-- step 14 -->
+              <!-- step 13 -->
               Well <b>{{client_details?.name}}</b>, thank you for your time, it's been a pleasure talking to you. 
               If you have any further clarifications , feel free to contact our website www.angani.co or phone number 020 – 5230028. 
 
@@ -246,7 +370,9 @@
               	(click)="postScript();stepper.reset();" 
               	style="background-color: #f54d38;"
               	routerLink="/landing">
-              End Call <mat-icon>call</mat-icon></button> 
+              	End Call 
+              	<mat-icon>call</mat-icon>
+          	  </button> 
             </mat-step>
           </mat-horizontal-stepper>
         </mat-card>

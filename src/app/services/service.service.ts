@@ -67,12 +67,19 @@ export class ServiceService {
     });
   }
 
-  disposeCall(client){
-    let url = this.serverURL+'update_client/'
+  callBackLater(client){
+    let url = this.serverURL+'callback_client/'
     let headers = new Headers({
       'Content-Type' : 'application/json',
     });
     return this.http.post(url, JSON.stringify(client), {headers:headers}) 
-    // return this.http.get(url, {headers:headers}).map(res=>res.json())
+  }
+
+  completeCall(client){
+    let url = this.serverURL+'complete_client/'
+    let headers = new Headers({
+      'Content-Type' : 'application/json',
+    });
+    return this.http.post(url, JSON.stringify(client), {headers:headers}) 
   }
 }
