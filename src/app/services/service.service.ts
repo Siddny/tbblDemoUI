@@ -7,8 +7,8 @@ import 'rxjs/Rx'
 @Injectable()
 export class ServiceService {
 
-  serverURL = "https://tbbldemo.herokuapp.com/";
-  // serverURL = "http://127.0.0.1:8000/";
+  // serverURL = "https://tbbldemo.herokuapp.com/";
+  serverURL = "http://127.0.0.1:8000/";
 
   constructor(private http:Http) { }
 
