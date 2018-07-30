@@ -135,21 +135,23 @@
 			<th>4</th>
 			<th>5</th>
 			<th>6</th>
+			<th>OtherSystems</th>
 			<th>7</th>
 			<th>8</th>
 			<th>9</th>
 			<th>10</th>
 			<th>Visit Date</th>
 			<th>Visit Time</th>
-			<th>11</th>
+			<th>11 (appointment email) </th>
+			<th>Question</th>
 			<th>Dispose</th>
-			<th>OtherSystems</th>
 			<th>CallBack Date</th>
 			<th>CallBack Time</th>
 			<th>Escalation</th>
 			<th>Email</th>
 			<th>Phone</th>
 			<th>Client</th>
+			<th>TimeStamp</th>
 		  </tr>
 		  <tr *ngFor="let element of scripts">
 		    <td>{{element?.id}}</td>
@@ -159,6 +161,7 @@
 			<td>{{element?.q4}}</td>
 			<td>{{element?.q5}}</td>
 			<td>{{element?.q6}}</td>
+			<td>{{element?.othersystems}}</td>
 			<td>{{element?.q7}}</td>
 			<td>{{element?.q8}}</td>
 			<td>{{element?.q9}}</td>
@@ -166,14 +169,15 @@
 			<td>{{element?.visitdate | date : fullDate}}</td>
 			<td>{{element?.visittime}}</td>
 			<td>{{element?.q11email}}</td>
+			<td>{{element?.q12}}</td>
 			<td>{{element?.dispose}}</td>
-			<td>{{element?.othersystems}}</td>
 			<td>{{element?.datetocall | date : fullDate }}</td>
 			<td>{{element?.timetocall}}</td>
 			<td>{{element?.escalation}}</td>
 			<td><a href="mailto:{{element?.email}}"> {{element?.email}} </a></td>
 			<td><a href="tel:{{element?.phone}}"> {{element?.phone}} </a></td>
 			<td>{{element?.client_name}}</td>
+			<td>{{element?.timestamp | date:'d/M/y, h:mm a'}}</td>
 		  </tr>
 		</table>
 	</div>

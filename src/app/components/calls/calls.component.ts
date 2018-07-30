@@ -38,6 +38,10 @@ export class CallsComponent implements OnInit {
   not_intQ10: boolean = false;
   not_intQ5: boolean = false;
 
+  available: boolean = false;
+  check_available: boolean = true;
+  not_available: boolean = false;
+
   userForm: FormGroup;
   scriptForm: FormGroup;
   new_script: Script = new Script();
@@ -78,6 +82,17 @@ export class CallsComponent implements OnInit {
         }
       })
     })
+  }
+
+  confirmAvailable(){
+  	this.check_available = !this.check_available;
+  	this.available = !this.available;
+  }
+
+  notAvailable(){
+  	if (this.not_available ==false ) {
+  		this.not_available = true;
+  	}
   }
 
   postScript(){

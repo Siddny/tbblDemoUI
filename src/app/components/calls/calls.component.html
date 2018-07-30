@@ -10,8 +10,49 @@
         <mat-toolbar color="primary">
           <h2>ABC Telesales Call Script </h2>
         </mat-toolbar>
+		
+		<mat-card *ngIf="check_available">
+			Connecting...<br>
+			<br>
+			<small>Call connected ? </small>
+			<button 
+				(click)="confirmAvailable()" 
+				mat-raised-button
+				style="background-color: lightgreen">
+				Yes</button>
+			<button 
+				(click)="notAvailable()"
+				mat-raised-button
+				style="background-color: #f54d38">
+			No</button>
+			<br>
+			<br>
+			<div *ngIf="not_available" style="align-content: center;">
+				<div class="row">
+					<div class="col-md-9 offset-1">
+						Call Availability
+						<br>
+						<mat-radio-group [(ngModel)]="new_script.dispose" name="dispose">
+			                <mat-radio-button (click)="callBackLater()" value="Phone Switched off">Phone Switched off</mat-radio-button><br>
+			                <mat-radio-button (click)="callBackLater()" value="No Answer">No Answer</mat-radio-button><br>
+			                <mat-radio-button (click)="callBackLater()" value="Phone Busy">Phone Busy</mat-radio-button><br>
+			                <mat-radio-button (click)="callBackLater()" value="Silent Call">Silent Call</mat-radio-button><br>
+			                <mat-radio-button (click)="callBackLater()" value="Voice mail">Voice mail</mat-radio-button><br>
+			                <mat-radio-button (click)="completeCall()" value="Number out of service">Number out of service</mat-radio-button><br>
+			                <mat-radio-button (click)="completeCall()" value="Invalid">Invalid</mat-radio-button><br>
+		              </mat-radio-group>
+		              <button 
+		              	mat-raised-button 
+		              	routerLink="/landing"
+		              	(click)="postScript()"
+		              	style="background-color: lightgreen">
+		              Submit</button>
+					</div>
+				</div>
+			</div>
+		</mat-card>
 
-        <mat-card>
+        <mat-card *ngIf="available">
             <mat-horizontal-stepper #stepper>
               <ng-template matStepperIcon="edit">
                 <mat-icon>check</mat-icon>
@@ -19,7 +60,7 @@
             <mat-step editable="false">   
             <!-- Q1   -->
             <!-- step 0 -->
-              Hello, Good Morning/afternoon/evening. My Name is <b>Cynthia</b> Calling you from ABC, could I speak to Mr./Mrs/Ms./Dr./Prof. 
+              Hello, Good Morning/afternoon/evening. My Name is <b>Cynthia</b> Calling you from ABC, could I speak to Mr./Mrs/Ms./Dr./Prof. <b>{{client_details?.name}}</b> 
               <br>
               <div>
                 <mat-radio-group [(ngModel)]="new_script.q1" name="q1">
@@ -28,7 +69,7 @@
                 </mat-radio-group>
               </div>
 
-              <div class="mt-2 float-right">
+              <!-- <div class="mt-2 float-right">
               	<mat-card style="background-color: #e3e3e3;">
 					If not Available
 					<button 
@@ -37,12 +78,12 @@
 						(click)="callBackLater();">
 					Call Back Later</button>
               	</mat-card>
-              </div>
+              </div> -->
               </mat-step>
             <mat-step editable="false">
               <!-- Q2 -->
             <!-- step 1 -->
-             Can I talk to Mr./Mrs/Ms./Dr./Prof. at some other date and time?
+             Can I talk to Mr./Mrs/Ms./Dr./Prof. <b>{{client_details?.name}}</b> at some other date and time?
                   <br>
                   <mat-radio-group [(ngModel)]="new_script.q2" name="q2">
                     <mat-radio-button value="YES" (click)="getTime()">YES</mat-radio-button><br>
@@ -291,6 +332,8 @@
               <!-- Q11-->
               <!-- step 10 -->
               Kindly assist us with your email address to sent an appointment invite whereby one of our representatives will visit you and take you through the process of registration / set up and get you ready for the services. 
+              <br>
+              <br>
               <form>
                 <mat-form-field style="width: 100%;">
                   <input matInput placeholder="Confirm email address" [(ngModel)]="client_email" name="client_email">
